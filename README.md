@@ -1,2 +1,25 @@
 # log
-统一日志输出
+
+![jdk](https://img.shields.io/badge/JAVA-1.6+-green.svg)    ![maven](https://img.shields.io/badge/maven-3.0+-green.svg)
+
+
+## Usage
+### slf4j
+![slf4j legacy](https://www.slf4j.org/images/legacy.png)
+
+![slf4j bindings](https://www.slf4j.org/images/concrete-bindings.png)
+
+![log4j2 slf4j](http://logging.apache.org/log4j/2.x/images/whichjar-slf4j-2.x.png)
+
+### log4j2
+![log4j2](http://logging.apache.org/log4j/2.x/images/whichjar-2.x.png)
+
+
+## Contributing
+
+Pull requests for new features, bug fixes, and suggestions are welcome!
+
+
+## License
+
+[![MIT](https://img.shields.io/bower/l/log)](https://github.com/xbw/log/blob/master/LICENSE)

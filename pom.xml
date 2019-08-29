@@ -11,6 +11,7 @@
 		<module>log-slf4j-log4j</module>
 		<module>log-slf4j-log4j2</module>
 		<module>log-test</module>
+		<module>log-jboss-logging</module>
 	</modules>
 
 	<properties>
@@ -22,26 +23,35 @@
 		<logback.version>1.2.3</logback.version>
 		<log4j2.version>2.11.2</log4j2.version>
 
-		<servlet.version>3.0.1</servlet.version>
+		<servlet.version>3.1.0</servlet.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- commons-logging start -->
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+				<scope>provided</scope>
+			</dependency>
+			<!-- commons-logging end -->
+
 			<!-- slf4j start -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
 			<!-- SLF4JBridgeHandler.install();// jul to slf4j -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>jul-to-slf4j</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
@@ -88,15 +98,14 @@
 				<artifactId>log4j-core</artifactId>
 				<version>${log4j2.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jul</artifactId>
+				<artifactId>log4j-jcl</artifactId>
 				<version>${log4j2.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-jcl</artifactId>
+				<artifactId>log4j-jul</artifactId>
 				<version>${log4j2.version}</version>
 			</dependency>
 			<dependency>
@@ -109,13 +118,6 @@
 				<artifactId>log4j-slf4j-impl</artifactId>
 				<version>${log4j2.version}</version>
 			</dependency>
-
-			<dependency>
-				<groupId>org.apache.logging.log4j</groupId>
-				<artifactId>log4j-web</artifactId>
-				<version>${log4j2.version}</version>
-			</dependency>
-
 			<dependency>
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-to-slf4j</artifactId>

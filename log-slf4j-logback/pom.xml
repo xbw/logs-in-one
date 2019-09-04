@@ -47,5 +47,13 @@
 			<artifactId>log4j-to-slf4j</artifactId>
 		</dependency>
 		<!-- log4j2 end -->
+
+		<!-- jboss-logging start -->
+		<!-- org.jboss.logging.Log4j2LoggerProvider -->
+		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+		</dependency>
+		<!-- jboss-logging end -->
 	</dependencies>
 </project>

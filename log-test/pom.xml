@@ -9,13 +9,16 @@
 	<artifactId>log-test</artifactId>
 	<dependencies>
 		<dependency>
+			<groupId>org.jboss.logging</groupId>
+			<artifactId>jboss-logging</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.xbw.log</groupId>
 			<!-- <artifactId>log-log4j2</artifactId> -->
 			<!-- <artifactId>log-slf4j-log4j</artifactId> -->
-			<artifactId>log-slf4j-log4j2</artifactId>
-			<!-- <artifactId>log-slf4j-logback</artifactId> -->
+			<!-- <artifactId>log-slf4j-log4j2</artifactId> -->
+			<artifactId>log-slf4j-logback</artifactId>
 			<version>${parent.version}</version>
 		</dependency>
-
 	</dependencies>
 </project>

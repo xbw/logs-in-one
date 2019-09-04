@@ -11,7 +11,6 @@
 		<module>log-slf4j-log4j</module>
 		<module>log-slf4j-log4j2</module>
 		<module>log-test</module>
-		<module>log-jboss-logging</module>
 	</modules>
 
 	<properties>
@@ -22,6 +21,7 @@
 		<log4j.version>1.2.17</log4j.version>
 		<logback.version>1.2.3</logback.version>
 		<log4j2.version>2.11.2</log4j2.version>
+		<jboss-logging.version>3.2.1.Final</jboss-logging.version>
 
 		<servlet.version>3.1.0</servlet.version>
 	</properties>
@@ -125,6 +125,14 @@
 			</dependency>
 			<!-- log4j2 end -->
 
+			<!-- jboss-logging start -->
+			<dependency>
+				<groupId>org.jboss.logging</groupId>
+				<artifactId>jboss-logging</artifactId>
+				<version>${jboss-logging.version}</version>
+			</dependency>
+			<!-- jboss-logging end -->
+			
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>

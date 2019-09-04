@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xbw.log</groupId>
+        <artifactId>log</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>commons-logging</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.xbw.log</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- commons-logging start -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <!-- commons-logging end -->
+
+        <!-- optional start -->
+        <!-- https://mvnrepository.com/artifact/avalon-framework/avalon-framework -->
+        <dependency>
+            <groupId>avalon-framework</groupId>
+            <artifactId>avalon-framework</artifactId>
+            <version>4.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/logkit/logkit -->
+        <dependency>
+            <groupId>logkit</groupId>
+            <artifactId>logkit</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <!-- optional end -->
+    </dependencies>
+</project>

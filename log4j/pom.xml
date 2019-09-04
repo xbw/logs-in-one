@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xbw.log</groupId>
+        <artifactId>log</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>log4j</artifactId>
+
+    <repositories>
+        <repository>
+            <id>psmith</id>
+            <url>http://people.apache.org/~psmith/logging.apache.org/repo</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.xbw.log</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- http://svn.apache.org/repos/asf/logging/sandbox/jul-to-log4j-bridge/ -->
+        <dependency>
+            <groupId>org.apache.logging</groupId>
+            <artifactId>apache-jul-log4j-bridge</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- commons-logging start -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <!-- commons-logging end -->
+
+        <!-- log4j start -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>apache-log4j-extras</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- log4j end -->
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
+    </dependencies>
+</project>

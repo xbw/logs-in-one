@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.xbw.log</groupId>
+        <artifactId>log</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>common</artifactId>
+
+    <dependencies>
+        <!-- commons-logging start -->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <!-- commons-logging end -->
+
+        <!-- slf4j start -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <!-- slf4j end -->
+
+
+        <!-- log4j start -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <!-- log4j end -->
+
+        <!-- log4j2 start -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j2.version}</version>
+        </dependency>
+        <!-- log4j2 end -->
+
+        <!-- jboss-logging start -->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+            <version>${jboss-logging.version}</version>
+        </dependency>
+        <!-- jboss-logging end -->
+    </dependencies>
+</project>

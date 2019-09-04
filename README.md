@@ -1,9 +1,10 @@
-# log
+# Log
 
-![jdk](https://img.shields.io/badge/JAVA-1.6+-green.svg)    ![maven](https://img.shields.io/badge/maven-3.0+-green.svg)
+![java](https://img.shields.io/badge/java-1.7+-brightgreen.svg)
+![maven](https://img.shields.io/badge/maven-3.0+-brightgreen.svg)
+![MIT](https://img.shields.io/bower/l/log)
 
-
-## Usage
+## Dependency
 ### slf4j
 ![slf4j legacy](https://www.slf4j.org/images/legacy.png)
 
@@ -22,4 +23,6 @@ Pull requests for new features, bug fixes, and suggestions are welcome!
 
 ## License
 
-[![MIT](https://img.shields.io/bower/l/log)](https://github.com/xbw/log/blob/master/LICENSE)
+[MIT](https://github.com/xbw/log/blob/master/LICENSE)
+
+Copyright (c) 2017-present xbw

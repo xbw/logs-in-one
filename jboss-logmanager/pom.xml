@@ -6,7 +6,7 @@
         <artifactId>log</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>jboss-log</artifactId>
+    <artifactId>jboss-logmanager</artifactId>
 
     <dependencies>
         <dependency>
@@ -22,18 +22,36 @@
         </dependency>
 
         <!-- https://developer.jboss.org/docs/DOC-13898 -->
+        <!-- JBoss LogManager start -->
         <dependency>
             <groupId>org.jboss.logmanager</groupId>
             <artifactId>jboss-logmanager</artifactId>
             <!--<version>1.2.2.GA</version>-->
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/log4j-jboss-logmanager -->
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>commons-logging-jboss-logmanager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>log4j2-jboss-logmanager</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.jboss.logmanager</groupId>
             <artifactId>log4j-jboss-logmanager</artifactId>
-            <version>1.2.0.Final</version>
         </dependency>
+        <!-- JBoss Log Manager: Log4j Emulation -->
         <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/jboss-logmanager-log4j -->
         <dependency>
             <groupId>org.jboss.logmanager</groupId>
@@ -47,18 +65,9 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/log4j2-jboss-logmanager -->
-        <dependency>
-            <groupId>org.jboss.logmanager</groupId>
-            <artifactId>log4j2-jboss-logmanager</artifactId>
-            <version>1.0.0.Beta1</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.jboss.slf4j/slf4j-jboss-logmanager -->
         <dependency>
             <groupId>org.jboss.slf4j</groupId>
             <artifactId>slf4j-jboss-logmanager</artifactId>
-            <version>1.0.4.GA</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -66,22 +75,9 @@
         </dependency>
 
         <dependency>
-            <!-- org.apache.commons.logging.impl.SLF4JLocationAwareLog -->
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-        <!--<dependency>
-            &lt;!&ndash; org.apache.commons.logging.impl.Log4JLogger &ndash;&gt;
-           <groupId>commons-logging</groupId>
-           <artifactId>commons-logging</artifactId>
-       </dependency>-->
-
-        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging-logmanager -->
-        <!-- bridging from jboss-logging -->
-        <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging-logmanager</artifactId>
-            <version>2.2.0.CR2</version>
         </dependency>
+        <!-- JBoss LogManager end -->
     </dependencies>
 </project>

@@ -9,15 +9,16 @@
     <modules>
         <module>common</module>
         <module>commons-logging</module>
-        <module>jboss-log</module>
+        <module>java-util-logging</module>
         <module>jboss-logging</module>
+        <module>jboss-logmanager</module>
         <module>log4j</module>
         <module>log4j2</module>
         <module>slf4j</module>
         <module>slf4j-logback</module>
         <module>slf4j-log4j</module>
         <module>slf4j-log4j2</module>
-        <module>test</module>
+        <module>zoo</module>
     </modules>
 
     <properties>
@@ -25,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.12.1</log4j2.version>
+        <log4j2.version>2.13.3</log4j2.version>
         <slf4j.version>1.7.30</slf4j.version>
         <logback.version>1.2.3</logback.version>
 
@@ -35,77 +36,91 @@
     <repositories>
         <repository>
             <id>aliyun</id>
-            <name>Aliyun Nexus Repository</name>
+            <name>Aliyun Repo</name>
             <url>https://maven.aliyun.com/repository/central/</url>
             <!-- <url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
-            <!-- 是否开启发布版构件下载 -->
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <!-- 是否开启快照版构件下载 -->
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
     </repositories>
 
     <dependencyManagement>
         <dependencies>
-            <!-- commons-logging start -->
+            <!-- Apache Commons Logging start -->
             <!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
                 <version>1.2</version>
             </dependency>
-            <!-- commons-logging end -->
+            <!-- Apache Commons Logging end -->
 
-            <!-- log4j start -->
+            <!-- Apache Log4j 1.2 start -->
             <!-- https://mvnrepository.com/artifact/log4j/log4j -->
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
+            <!--Apache Extras™ For Apache Log4j™.-->
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>apache-log4j-extras</artifactId>
                 <version>1.2.17</version>
             </dependency>
-            <!-- log4j end -->
+            <!-- Apache Log4j 1.2 end -->
 
-            <!-- log4j2 start -->
-            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+            <!-- Apache Log4j2 start -->
+            <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--The Apache Log4j Implementation-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--The Apache Log4j Commons Logging Adapter-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-jcl</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--The Apache Log4j implementation of java.util.logging-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-jul</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--Apache Log4j JDK Platform Logging Adapter @since 2.13.2-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-jpl</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <!--The Apache Log4j 1.x Compatibility API-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-1.2-api</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--The Apache Log4j SLF4J API binding to Log4j 2 Core-->
+            <!--log4j-slf4j-impl should be used with SLF4J 1.7.x releases or older.-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
+            <!--The Apache Log4j SLF4J 1.8 API binding to Log4j 2 Core-->
+            <!--log4j-slf4j18-impl should be used with SLF4J 1.8.x releases or newer.-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-slf4j18-impl</artifactId>
+                <version>${log4j2.version}</version>
+            </dependency>
+            <!--The Apache Log4j binding between Log4j 2 API and SLF4J.-->
+            <!--Use of this adapter may cause some loss of performance as the Log4j 2 Messages must be formatted before they can be passed to SLF4J. -->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-to-slf4j</artifactId>
@@ -117,65 +132,68 @@
                 <artifactId>log4j-web</artifactId>
                 <version>${log4j2.version}</version>
             </dependency>
-            <!-- log4j2 end -->
+            <!-- Apache Log4j2 end -->
 
-            <!-- slf4j start -->
+            <!-- SLF4J start -->
             <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>slf4j-ext</artifactId>
-                <version>${slf4j.version}</version>
-            </dependency>
+            <!--JCL 1.2 implemented over SLF4J-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--JUL to SLF4J bridge-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>jul-to-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--Log4j implemented over SLF4J-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>log4j-over-slf4j</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
 
+            <!--SLF4J JCL Binding-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jcl</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--SLF4J JDK14 Binding-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jdk14</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--SLF4J LOG4J-12 Binding-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--SLF4J NOP Binding-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-nop</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
+            <!--SLF4J Simple binding-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
                 <version>${slf4j.version}</version>
             </dependency>
-            <!-- slf4j end -->
+            <!-- SLF4J end -->
 
-            <!-- logback start -->
-            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+            <!-- Logback start -->
+            <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
@@ -186,23 +204,78 @@
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
             </dependency>
-            <!-- logback end -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-access</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <!-- Logback end -->
 
-            <!-- jboss-logging start -->
+            <!-- JBoss Logging start -->
             <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging</artifactId>
                 <version>3.4.1.Final</version>
             </dependency>
-            <!-- jboss-logging end -->
+            <!--JBoss Logging LogManager Implementation-->
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-logmanager</artifactId>
+                <version>2.2.0.CR2</version>
+            </dependency>
+            <!--Apache Commons Logging to JBoss Logging implementation -->
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>commons-logging-jboss-logging</artifactId>
+                <version>1.0.0.Final</version>
+            </dependency>
+            <!--JBoss Logging Log4j Implementation-->
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-log4j</artifactId>
+                <version>2.2.0.CR1</version>
+            </dependency>
+            <!--JBoss Logging JDK Implementation-->
+            <dependency>
+                <groupId>org.jboss.logging</groupId>
+                <artifactId>jboss-logging-jdk</artifactId>
+                <version>2.2.0.CR1</version>
+            </dependency>
+            <!-- JBoss Logging end -->
+
+            <!-- JBoss LogManager start -->
             <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/jboss-logmanager -->
             <dependency>
                 <groupId>org.jboss.logmanager</groupId>
                 <artifactId>jboss-logmanager</artifactId>
                 <version>2.1.17.Final</version>
             </dependency>
-
+            <!--An Apache Commons Logging implementation for JBoss Log Manager-->
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>commons-logging-jboss-logmanager</artifactId>
+                <version>1.0.3.Final</version>
+            </dependency>
+            <!--Log4j2 JBoss LogManager-->
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>log4j2-jboss-logmanager</artifactId>
+                <version>1.0.0.Beta1</version>
+            </dependency>
+            <!--Log4j JBoss LogManager-->
+            <dependency>
+                <groupId>org.jboss.logmanager</groupId>
+                <artifactId>log4j-jboss-logmanager</artifactId>
+                <version>1.2.0.Final</version>
+            </dependency>
+            <!--SLF4J: JBoss Log Manager-->
+            <dependency>
+                <groupId>org.jboss.slf4j</groupId>
+                <artifactId>slf4j-jboss-logmanager</artifactId>
+                <version>1.0.4.GA</version>
+            </dependency>
+            <!-- JBoss LogManager end -->
 
             <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
             <dependency>

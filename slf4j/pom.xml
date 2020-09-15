@@ -8,7 +8,6 @@
     </parent>
     <artifactId>slf4j</artifactId>
 
-
     <dependencies>
         <dependency>
             <groupId>com.xbw.log</groupId>
@@ -22,12 +21,10 @@
             </exclusions>
         </dependency>
 
-        <!-- slf4j start -->
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <!-- SLF4J start -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
@@ -59,31 +56,34 @@
             <artifactId>logback-classic</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- slf4j end -->
+        <!-- SLF4J end -->
 
-        <!-- log4j2 start -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <scope>provided</scope>
-        </dependency>
+         <!-- Apache Log4j2 start -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-slf4j-impl</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- log4j2 end -->
+         <!-- Apache Log4j2 end -->
 
         <!-- https://mvnrepository.com/artifact/org.jboss.slf4j/slf4j-jboss-logging -->
         <dependency>
             <groupId>org.jboss.slf4j</groupId>
             <artifactId>slf4j-jboss-logging</artifactId>
             <version>1.2.0.Final</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.slf4j/slf4j-jboss-logmanager -->
+        <dependency>
+            <groupId>org.jboss.slf4j</groupId>
+            <artifactId>slf4j-jboss-logmanager</artifactId>
+            <version>1.0.4.GA</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

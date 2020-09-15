@@ -6,8 +6,7 @@
 		<artifactId>log</artifactId>
 		<version>1.0.0</version>
 	</parent>
-	<artifactId>log4j2</artifactId>
-
+	<artifactId>java-util-logging</artifactId>
 	<dependencies>
 		<dependency>
 			<groupId>com.xbw.log</groupId>
@@ -21,45 +20,36 @@
 			</exclusions>
 		</dependency>
 
-		 <!-- Apache Log4j2 start -->
+		<!-- Apache Commons Logging start -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<!-- Apache Commons Logging end -->
+
+		<!-- Apache Log4j2 start -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
+			<artifactId>log4j-to-slf4j</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-1.2-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-jcl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-jul</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-		</dependency>
-		 <!-- Apache Log4j2 end -->
+		<!-- Apache Log4j2 end -->
 
 		<!-- SLF4J start -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
-			<artifactId>jul-to-slf4j</artifactId>
+			<artifactId>log4j-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
 		</dependency>
 		<!-- SLF4J end -->
 
 		<!-- JBoss Logging start -->
-		<!-- org.jboss.logging.Log4j2LoggerProvider -->
 		<dependency>
 			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging</artifactId>
+			<artifactId>jboss-logging-jdk</artifactId>
 		</dependency>
 		<!-- JBoss Logging end -->
 	</dependencies>

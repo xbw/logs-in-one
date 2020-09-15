@@ -21,60 +21,46 @@
             </exclusions>
         </dependency>
 
-        <!-- log4j start -->
+        <!-- JBoss Logging start -->
         <dependency>
-            <!-- org.jboss.logging.Log4jLogger -->
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
         </dependency>
-        <!-- log4j end -->
-        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging-log4j -->
+
         <dependency>
-            <!-- org.jboss.logging.Logger -->
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-logmanager</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.jboss.logging</groupId>
             <artifactId>jboss-logging-log4j</artifactId>
-            <version>2.2.0.CR1</version>
-            <scope>provided</scope>
         </dependency>
+        <!-- JBoss Logging end -->
 
-        <!-- log4j2 start -->
+         <!-- Apache Log4j2 start -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <scope>provided</scope>
+            <artifactId>log4j-api</artifactId>
         </dependency>
-        <!-- log4j2 end -->
+         <!-- Apache Log4j2 end -->
 
-        <!-- slf4j start -->
+
+        <!-- SLF4J start -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
+        <!-- only for org.jboss.logging.provider -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- slf4j end -->
+        <!-- SLF4J end -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- jboss-logging start -->
-        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging</artifactId>
-        </dependency>
-        <!-- jboss-logging end -->
-
-        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging-logmanager -->
-        <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>jboss-logging-logmanager</artifactId>
-            <version>2.2.0.CR2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

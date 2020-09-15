@@ -1,15 +1,13 @@
 package com.xbw.log;
 
 import com.xbw.log.jcl.JCL;
-import org.apache.avalon.framework.logger.ConsoleLogger;
-import org.apache.commons.logging.Log;
+import org.apache.avalon.framework.logger.*;
 import org.apache.commons.logging.impl.AvalonLogger;
-import org.apache.log4j.BasicConfigurator;
 
 public class Main {
     static {
         try {
-            BasicConfigurator.configure();
+            org.apache.log4j.BasicConfigurator.configure();
         } catch (NoClassDefFoundError e) {
             // log4j is provided
         }
@@ -17,17 +15,44 @@ public class Main {
 
     public static void main(String[] args) {
         JCL.log();
-//        avalonLogger();
+
+//        avalonConsole();
+//        avalonJdk14();
+//        avalonLog4J();
+//        avalonLogKit();
+//        avalonNull();
     }
 
     /**
-     * commons-logging.properties 中配置以下
+     * when commons-logging.properties config
      * org.apache.commons.logging.Log = org.apache.commons.logging.impl.AvalonLogger
-     * 报Exception in thread "main" java.lang.ExceptionInInitializerError
+     * show Exception in thread "main" java.lang.ExceptionInInitializerError
      */
-    public static void avalonLogger() {
-        Log logger = new AvalonLogger(new ConsoleLogger());
-        logger.error("error");
+    private static void avalonConsole() {
+        JCL.log(getAvalonLogger(new ConsoleLogger()));
     }
 
+    private static void avalonJdk14() {
+        JCL.log(getAvalonLogger(new Jdk14Logger(java.util.logging.Logger.getLogger(JCL.class.getName()))));
+    }
+
+    private static void avalonLog4J() {
+        try {
+            JCL.log(getAvalonLogger(new Log4JLogger(org.apache.log4j.Logger.getLogger(JCL.class))));
+        } catch (NoClassDefFoundError e) {
+            // log4j is provided
+        }
+    }
+
+    private static void avalonLogKit() {
+        JCL.log(getAvalonLogger(new LogKitLogger(org.apache.log.Hierarchy.getDefaultHierarchy().getLoggerFor(JCL.class.getName()))));
+    }
+
+    private static void avalonNull() {
+        JCL.log(getAvalonLogger(new NullLogger()));
+    }
+
+    private static AvalonLogger getAvalonLogger(org.apache.avalon.framework.logger.Logger logger) {
+        return new AvalonLogger(logger);
+    }
 }

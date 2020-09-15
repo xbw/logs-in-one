@@ -1,4 +1,4 @@
-package com.xbw.log.others;
+package com.xbw.log.logkit;
 
 import org.apache.log.Hierarchy;
 import org.apache.log.Logger;
@@ -13,7 +13,7 @@ public class LogKit {
         log(logger);
     }
 
-    private static void log(Logger logger) {
+    public static void log(Logger logger) {
         logger.info("logger = " + logger.getClass().getName());
 
         if (logger.isFatalErrorEnabled()) {

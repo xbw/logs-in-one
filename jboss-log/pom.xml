@@ -22,18 +22,29 @@
         </dependency>
 
         <!-- https://developer.jboss.org/docs/DOC-13898 -->
-        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/jboss-logmanager -->
-        <!--<dependency>
+        <dependency>
             <groupId>org.jboss.logmanager</groupId>
             <artifactId>jboss-logmanager</artifactId>
-            <version>1.2.2.GA</version>
-        </dependency>-->
+            <!--<version>1.2.2.GA</version>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/log4j-jboss-logmanager -->
         <dependency>
             <groupId>org.jboss.logmanager</groupId>
             <artifactId>log4j-jboss-logmanager</artifactId>
             <version>1.2.0.Final</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/jboss-logmanager-log4j -->
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager-log4j</artifactId>
+            <version>1.0.0.GA</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/log4j2-jboss-logmanager -->

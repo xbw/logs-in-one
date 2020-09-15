@@ -10,21 +10,21 @@
 			<level>DEBUG</level>
 		</filter>
 		<encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-6level %logger - %msg%n</pattern>
 		</encoder>
 	</appender>
 
 	<appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>../logs/xbw-logback-default.log</file>
+		<file>../logs/logback-default.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 			<!-- rollover daily -->
-			<fileNamePattern>../logs/xbw-logback-default-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<fileNamePattern>../logs/logback-default-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<maxFileSize>20MB</maxFileSize>
 			<maxHistory>60</maxHistory>
 			<totalSizeCap>20GB</totalSizeCap>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-6level %logger - %msg%n</pattern>
 		</encoder>
 	</appender>
 

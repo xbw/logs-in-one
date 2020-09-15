@@ -11,6 +11,10 @@ public class Log4j2 {
         log(logger);
     }
 
+    /**
+     * @param logger org.apache.logging.log4j.core.Logger
+     *               org.apache.logging.log4j.simple.SimpleLogger
+     */
     private static void log(Logger logger) {
         logger.info("logger = " + logger.getClass().getName());
 

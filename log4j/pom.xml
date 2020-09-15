@@ -16,7 +16,16 @@
                 <enabled>false</enabled>
             </releases>
         </repository>
+        <repository>
+            <id>jboss-maven2-release-repository</id>
+            <name>JBoss Releases Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
     </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.xbw.log</groupId>
@@ -30,19 +39,19 @@
             </exclusions>
         </dependency>
 
-        <!-- http://svn.apache.org/repos/asf/logging/sandbox/jul-to-log4j-bridge/ -->
-        <dependency>
-            <groupId>org.apache.logging</groupId>
-            <artifactId>apache-jul-log4j-bridge</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
         <!-- commons-logging start -->
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
         </dependency>
         <!-- commons-logging end -->
+
+        <!-- http://svn.apache.org/repos/asf/logging/sandbox/jul-to-log4j-bridge/ -->
+        <dependency>
+            <groupId>org.apache.logging</groupId>
+            <artifactId>apache-jul-log4j-bridge</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- log4j start -->
         <dependency>
@@ -52,9 +61,54 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>apache-log4j-extras</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
         <!-- log4j end -->
+
+        <!-- log4j2 start -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-to-slf4j</artifactId>
+        </dependency>
+        <!-- log4j2 end -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.logbridge/jboss-logbridge -->
+        <!--<dependency>
+            <groupId>org.jboss.logbridge</groupId>
+            <artifactId>jboss-logbridge</artifactId>
+            <version>1.0.1.GA</version>
+        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/jboss-logmanager-log4j -->
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager-log4j</artifactId>
+            <version>1.0.0.GA</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>jboss-logmanager</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.logmanager/log4j2-jboss-logmanager -->
+        <dependency>
+            <groupId>org.jboss.logmanager</groupId>
+            <artifactId>log4j2-jboss-logmanager</artifactId>
+            <version>1.0.0.Beta1</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- jboss-logging start -->
+        <!-- org.jboss.logging.Log4jLoggerProvider -->
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
+        <!-- jboss-logging end -->
+
 
         <dependency>
             <groupId>javax.mail</groupId>

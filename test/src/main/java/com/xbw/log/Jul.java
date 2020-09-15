@@ -33,7 +33,6 @@ public class Jul {
 
 	public static void main(String[] args) {
 		Jul.log();
-		System.out.println("========================>");
 		new Jul().logAll();
 	}
 

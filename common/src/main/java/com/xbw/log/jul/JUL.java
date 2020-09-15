@@ -14,8 +14,12 @@ public class JUL {
         log(logger);
     }
 
+    /**
+     * @param logger java.util.logging.Logger
+     *               org.apache.logging.log4j.jul.CoreLogger
+     */
     private static void log(Logger logger) {
-        logger.fine("logger = " + logger.getClass().getName());
+        logger.info("logger = " + logger.getClass().getName());
 
         logger.severe(Level.SEVERE.getName());
         logger.warning(Level.WARNING.getName());

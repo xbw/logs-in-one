@@ -56,5 +56,16 @@
 			<artifactId>jboss-logging</artifactId>
 		</dependency>
 		<!-- jboss-logging end -->
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jboss.logbridge/jboss-logbridge -->
+		<dependency>
+			<groupId>org.jboss.logbridge</groupId>
+			<artifactId>jboss-logbridge</artifactId>
+			<version>1.0.1.GA</version>
+		</dependency>
 	</dependencies>
 </project>

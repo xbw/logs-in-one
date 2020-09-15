@@ -8,8 +8,11 @@ import org.apache.log4j.BasicConfigurator;
 
 public class Main {
     static {
-        // Log4JLogger based configuration
-        BasicConfigurator.configure();
+        try {
+            BasicConfigurator.configure();
+        } catch (NoClassDefFoundError e) {
+            // log4j is provided
+        }
     }
 
     public static void main(String[] args) {

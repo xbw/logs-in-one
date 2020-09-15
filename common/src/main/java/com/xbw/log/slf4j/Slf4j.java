@@ -10,6 +10,14 @@ public class Slf4j {
         log(logger);
     }
 
+    /**
+     * @param logger org.slf4j.impl.JCLLoggerAdapter
+     *               org.slf4j.impl.JDK14LoggerAdapter
+     *               org.slf4j.impl.Log4jLoggerAdapter
+     *               org.apache.logging.slf4j.Log4jLogger
+     *               org.slf4j.impl.SimpleLogger
+     *               org.jboss.slf4j.JBossLoggerAdapter
+     */
     private static void log(Logger logger) {
         logger.info("logger = " + logger.getClass().getName());
 

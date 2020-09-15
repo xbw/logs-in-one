@@ -13,6 +13,17 @@ public class JCL {
         log(logger);
     }
 
+    /**
+     * @param logger org.apache.commons.logging.impl.Jdk13LumberjackLogger
+     *               org.apache.commons.logging.impl.Jdk14Logger
+     *               org.apache.commons.logging.impl.JBossLog
+     *               org.apache.commons.logging.impl.Log4JLogger
+     *               org.apache.logging.log4j.jcl.Log4jLog
+     *               org.apache.commons.logging.impl.LogKitLogger
+     *               org.apache.commons.logging.impl.NoOpLog
+     *               org.apache.commons.logging.impl.SimpleLog
+     *               org.apache.commons.logging.impl.SLF4JLog
+     */
     private static void log(Log logger) {
         logger.info("logger = " + logger.getClass().getName());
 

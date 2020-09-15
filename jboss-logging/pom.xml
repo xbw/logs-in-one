@@ -6,7 +6,7 @@
         <artifactId>log</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>commons-logging</artifactId>
+    <artifactId>jboss-logging</artifactId>
 
     <dependencies>
         <dependency>
@@ -21,24 +21,26 @@
             </exclusions>
         </dependency>
 
-        <!-- commons-logging start -->
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-        </dependency>
-        <!-- commons-logging end -->
-
         <!-- log4j start -->
         <dependency>
+            <!-- org.jboss.logging.Log4jLogger -->
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
         </dependency>
         <!-- log4j end -->
+        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging-log4j -->
+        <dependency>
+            <!-- org.jboss.logging.Logger -->
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-log4j</artifactId>
+            <version>2.2.0.CR1</version>
+            <scope>provided</scope>
+        </dependency>
 
         <!-- log4j2 start -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-jcl</artifactId>
+            <artifactId>log4j-core</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- log4j2 end -->
@@ -46,8 +48,7 @@
         <!-- slf4j start -->
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <scope>provided</scope>
+            <artifactId>slf4j-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -55,26 +56,26 @@
             <scope>provided</scope>
         </dependency>
         <!-- slf4j end -->
-
-        <!-- https://mvnrepository.com/artifact/org.jboss.logging/commons-logging-jboss-logging -->
         <dependency>
-            <groupId>org.jboss.logging</groupId>
-            <artifactId>commons-logging-jboss-logging</artifactId>
-            <version>1.0.0.Final</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/avalon-framework/avalon-framework -->
+        <!-- jboss-logging start -->
+        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging -->
         <dependency>
-            <groupId>avalon-framework</groupId>
-            <artifactId>avalon-framework</artifactId>
-            <version>4.1.5</version>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/logkit/logkit -->
+        <!-- jboss-logging end -->
+
+        <!-- https://mvnrepository.com/artifact/org.jboss.logging/jboss-logging-logmanager -->
         <dependency>
-            <groupId>logkit</groupId>
-            <artifactId>logkit</artifactId>
-            <version>1.0.1</version>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging-logmanager</artifactId>
+            <version>2.2.0.CR2</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -17,7 +17,6 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 		</dependency>
-		<!-- SLF4JBridgeHandler.install();// jul to slf4j -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
@@ -42,6 +41,11 @@
 			<artifactId>log4j-slf4j-impl</artifactId>
 		</dependency>
 		<!-- log4j2 end -->
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-web</artifactId>
+		</dependency>
 
 		<!-- jboss-logging start -->
 		<!-- org.jboss.logging.Log4j2LoggerProvider -->

@@ -9,6 +9,11 @@
 	<artifactId>zoo</artifactId>
 	<dependencies>
 
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.apache.avalon.framework/avalon-framework-impl -->
 		<dependency>
 			<groupId>org.apache.avalon.framework</groupId>

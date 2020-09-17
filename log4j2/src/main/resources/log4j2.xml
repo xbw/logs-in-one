@@ -2,38 +2,92 @@
 <!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 <!--Configuration后面的status，这个用于设置log4j2自身内部的信息输出，可以不设置，当设置成trace时，你会看到log4j2内部各种详细输出 -->
 <!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身，设置间隔秒数 -->
-<configuration status="WARN" monitorInterval="30">
+<Configuration  status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_HOME">../logs</Property>
+    </Properties>
+    <!-- Define custom levels before using them for filtering below. -->
+    <CustomLevels>
+        <CustomLevel name="DIAG" intLevel="350" />
+        <CustomLevel name="NOTICE" intLevel="450" />
+        <CustomLevel name="VERBOSE" intLevel="550" />
+    </CustomLevels>
     <!--先定义所有的appender -->
-    <appenders>
+    <Appenders>
+        <!-- 优先级从高到低分别是 OFF、FATAL、ERROR、WARN、INFO、DEBUG、ALL -->
+        <!-- 单词解释： Match：匹配 DENY：拒绝 Mismatch：不匹配 ACCEPT：接受 -->
+        <!-- DENY，日志将立即被抛弃不再经过其他过滤器； NEUTRAL，有序列表里的下个过滤器过接着处理日志； ACCEPT，日志会被立即处理，不再经过剩余过滤器。 -->
+        <!--输出日志的格式
+         %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间
+         %p : 日志输出格式
+         %c : logger的名称
+         %m : 日志内容，即 logger.info("message")
+         %n : 换行符
+         %C : Java类名
+         %L : 日志输出所在行数
+         %M : 日志输出所在方法名
+         hostName : 本地机器名
+         hostAddress : 本地ip地址 -->
+
         <!--这个输出控制台的配置 -->
-        <console name="Console" target="SYSTEM_OUT">
+        <Console name="Console" target="SYSTEM_OUT">
             <!--输出日志的格式 -->
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-6level %logger - %msg%n"/>
-        </console>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
+        </Console>
 
 
         <!-- 按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-        <!-- filePattern="../logs/$${date:yyyy-MM}/xbw-log4j2-default-%d{yyyy-MM-dd}-%i.log" -->
-        <RollingFile name="Rolling" fileName="../logs/log4j2-default.log"
-                     filePattern="../logs/log4j2-default-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-6level %logger - %msg%n"/>
+        <!-- filePattern="../logs/$${date:yyyy-MM}/log4j2-default-%d{yyyy-MM-dd}-%i.log" -->
+        <RollingFile name="Rolling" fileName="../logs/log4j2-default.log" immediateFlush="false" append="true"
+                     filePattern="../logs/log4j2-default-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
             <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                   ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
                 <TimeBasedTriggeringPolicy/>
-                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <!-- 每个日志文件最大512MB -->
+                <SizeBasedTriggeringPolicy size="512MB"/>
             </Policies>
             <!-- 最大保存文件数 -->
             <DefaultRolloverStrategy max="60"/>
         </RollingFile>
-    </appenders>
+
+        <RollingFile name="RollingPro" fileName="../logs/log4j2-default.log" immediateFlush="false" append="true"
+                     filePattern="../logs/log4j2-default-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
+            <Filters>
+                <!--如果是error级别拒绝 onMismatch="NEUTRAL"，有序列表里的下个过滤器过接着处理日志； -->
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <!--如果是info\warn输出 onMismatch="DENY"，日志将立即被抛弃不再经过其他过滤器 -->
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <!-- 如果启用此配置，则日志会按文件名生成新压缩文件， 即如果filePattern配置的日期格式为 %d{yyyy-MM-dd HH}
+                   ，则每小时生成一个压缩文件， 如果filePattern配置的日期格式为 %d{yyyy-MM-dd} ，则天生成一个压缩文件 -->
+                <TimeBasedTriggeringPolicy/>
+                <!-- 每个日志文件最大512MB -->
+                <SizeBasedTriggeringPolicy size="512MB"/>
+            </Policies>
+            <!-- 最大保存文件数 -->
+            <!--<DefaultRolloverStrategy max="60"/>-->
+            <DefaultRolloverStrategy>
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <IfFileName glob="*/log4j2-default-*.log.gz"/>
+                    <!-- 删除30天前的文件 -->
+                    <IfLastModified age="30d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
 
 
     <!--然后定义logger，只有定义了logger并引入的appender，appender才会生效 -->
 
-    <loggers>
-        <logger name="javax.management" level="DEBUG"></logger>
-        <root level="ALL">
-            <appender-ref ref="Console"/>
-            <appender-ref ref="Rolling"/>
-        </root>
-    </loggers>
-</configuration>
+    <Loggers>
+        <Logger name="javax.management" level="DEBUG" />
+        <Root level="ALL">
+            <Appender-Ref ref="Console"/>
+            <Appender-Ref ref="Rolling"/>
+        </Root>
+    </Loggers>
+</Configuration >

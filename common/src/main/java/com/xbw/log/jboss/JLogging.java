@@ -4,8 +4,6 @@ import org.jboss.logging.Logger;
 
 /**
  * @author xbw
- * <p>
- * org.jboss.logging.LoggerProviders.findProvider();
  */
 public class JLogging {
     private static final Logger logger = Logger.getLogger(JLogging.class);
@@ -23,7 +21,8 @@ public class JLogging {
      *               org.jboss.logging.JBossLogManagerLogger
      */
     public static void log(Logger logger) {
-        logger.info("logger = " + logger.getClass().getName());
+        logger.info("logger = " + logger.getClass() + " , " + logger.getName());
+
         logger.fatal(Logger.Level.FATAL);
         logger.error(Logger.Level.ERROR);
         logger.warn(Logger.Level.WARN);

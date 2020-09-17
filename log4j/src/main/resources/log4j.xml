@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">-->
-<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
 <!--<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">-->
+<!--<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">-->
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="false">
     <!-- https://www.cnblogs.com/alterhu/archive/2013/07/14/3189177.html -->
     <!-- ========================== 自定义输出格式说明================================ -->
@@ -59,8 +60,8 @@
     <!-- 设定文件大小输出到文件 -->
     <appender name="rolling" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="../logs/log4j-rolling.log"/>
-        <param name="MaxFileSize" value="100MB"></param>
-        <param name="MaxBackupIndex" value="50"></param>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="50"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
         </layout>
@@ -69,8 +70,8 @@
     <!-- 设定文件大小输出到文件 -->
     <appender name="custom" class="org.apache.log4j.RollingFileAppender">
         <param name="File" value="../logs/log4j-custom.log"/>
-        <param name="MaxFileSize" value="100MB"></param>
-        <param name="MaxBackupIndex" value="50"></param>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="50"/>
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
         </layout>
@@ -113,6 +114,15 @@
         <layout class="org.apache.log4j.HTMLLayout">
             <param name="LocationInfo" value="TRUE"/>
             <param name="Title" value="Log4j - Log Messages "/>
+        </layout>
+    </appender>
+
+    <appender name="socket" class="org.apache.log4j.net.SocketAppender">
+        <param name="RemoteHost" value="localhost"/>
+        <param name="Port" value="5000"/>
+        <param name="LocationInfo" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%t %-5p %c{2} - %m%n"/>
         </layout>
     </appender>
 
@@ -165,8 +175,7 @@
     <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->
     <logger name="com.xbw.log.log4j.Log4j.custom" additivity="false">
         <level value="info"/>
-        <appender-ref ref="stdout"/>
-        <!--<appender-ref ref="custom" />-->
+        <appender-ref ref="custom"/>
     </logger>
 
     <!-- 根logger的设置 -->

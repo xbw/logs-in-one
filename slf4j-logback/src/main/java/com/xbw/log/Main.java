@@ -1,5 +1,6 @@
 package com.xbw.log;
 
+import com.xbw.log.jboss.JLog;
 import com.xbw.log.jboss.JLogging;
 import com.xbw.log.jcl.JCL;
 import com.xbw.log.jul.JUL;
@@ -12,18 +13,19 @@ import com.xbw.log.slf4j.Slf4j;
  */
 public class Main {
     static {
-        Config.jul2Log4j2();
-        Config.jul2Slf4J();
-        System.setProperty("org.jboss.logging.provider", "log4j2");
+        Config.jul2JBossLog();
+        System.setProperty("org.jboss.logging.provider","slf4j");
     }
 
     public static void main(String[] args) {
-        Config.jul2JBossLog();
         JCL.log();
-        // when exist jboss-logmanager, org.jboss.logmanager.Logger
-        // when not exist Config.jul2Log4j2();, java.util.logging.Logger
-        // other, org.apache.logging.log4j.jul.CoreLogger
+        // jul --> slf4j --> log4j
+        Config.jul2Slf4J();
         JUL.log();
+        // jboss logmanager --> jul --> slf4j --> log4j, org.jboss.logmanager.Logger
+        JLog.log();
+        // jboss logging --> jboss logmanager --> jul --> slf4j -->l og4j
+        // jboss logging --> log4j2 --> slf4j --> log4j
         JLogging.log();
         Log4j.log();
         Log4j2.log();

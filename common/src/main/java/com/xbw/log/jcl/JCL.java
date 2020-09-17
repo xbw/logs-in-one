@@ -7,25 +7,27 @@ import org.apache.commons.logging.LogFactory;
  * @author xbw
  */
 public class JCL {
-    private static Log logger = LogFactory.getLog(JCL.class);
+    private static final Log logger = LogFactory.getLog(JCL.class);
 
     public static void log() {
         log(logger);
     }
 
     /**
-     * @param logger org.apache.commons.logging.impl.Jdk13LumberjackLogger
-     *               org.apache.commons.logging.impl.Jdk14Logger
+     * @param logger org.apache.commons.logging.JBossLog
+     *               org.apache.commons.logging.impl.AvalonLogger
      *               org.apache.commons.logging.impl.JBossLog
+     *               org.apache.commons.logging.impl.Jdk13LumberjackLogger
+     *               org.apache.commons.logging.impl.Jdk14Logger
      *               org.apache.commons.logging.impl.Log4JLogger
-     *               org.apache.logging.log4j.jcl.Log4jLog
      *               org.apache.commons.logging.impl.LogKitLogger
      *               org.apache.commons.logging.impl.NoOpLog
      *               org.apache.commons.logging.impl.SimpleLog
      *               org.apache.commons.logging.impl.SLF4JLog
+     *               org.apache.logging.log4j.jcl.Log4jLog
      */
-    private static void log(Log logger) {
-        logger.info("logger = " + logger.getClass().getName());
+    public static void log(Log logger) {
+        logger.info("logger = " + logger.getClass());
 
         if (logger.isFatalEnabled()) {
             // java.util.logging.Level.SEVERE

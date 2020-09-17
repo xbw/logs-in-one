@@ -8,6 +8,9 @@ import com.xbw.log.log4j.Log4j;
 import com.xbw.log.log4j2.Log4j2;
 import com.xbw.log.slf4j.Slf4j;
 
+/**
+ * @author xbw
+ */
 public class Main {
     static {
         // Using JBoss LogManager (1.1.x) in a standalone program
@@ -15,13 +18,12 @@ public class Main {
 
         // 2. Specify the alternate log manager as a system property, either on the command-line or as a part of your early boot process:
         // -Djava.util.logging.manager=org.jboss.logmanager.LogManager
-        System.setProperty("java.util.logging.manager", "org.jboss.logmanager.LogManager");
+        Config.jul2JBossLog();
 
         // 3. Specify your logging configuration properties (see JBossBootLogging for information about how to set up this properties file).
         // JBossBootLogging https://developer.jboss.org/docs/DOC-10235
-//        String configPath = "file:" + Main.class.getResource("/").getPath()+ "logging.properties";
-//        System.out.println("configPath = " + configPath);
-//        System.setProperty("logging.configuration", configPath);
+//        String configuration = "file:" + Main.class.getResource("/").getPath()+ "logging.properties";
+//        System.out.println("logging.configuration = " + Config.configuration(Config.JBOSS_LOGMANAGER_CONFIGURATION,configuration));
 
         // 4.1. Specify the special system property to disable automatic log4j configuration:
         System.setProperty("log4j.defaultInitOverride", "true");
@@ -37,6 +39,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        // commons-logging-jboss-logmanager > org.apache.commons.logging.JBossLog
         // jcl-over-slf4j > org.apache.commons.logging.impl.SLF4JLocationAwareLog
         // commons-logging > org.apache.commons.logging.impl.Log4JLogger
         // commons-logging.properties config org.apache.commons.logging.impl.Jdk14Logger
@@ -45,6 +48,7 @@ public class Main {
         JUL.log();
         // jboss-logmanager > org.jboss.logmanager.Logger
         JLog.log();
+        JLog.log("");
         // jboss-logmanager > org.jboss.logging.Logger
         JLogging.log();
         // log4j-jboss-logmanager > org.apache.log4j.Logger

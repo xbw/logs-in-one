@@ -14,7 +14,7 @@ public class LogKit {
     }
 
     public static void log(Logger logger) {
-        logger.info("logger = " + logger.getClass().getName());
+        logger.info("logger = " + logger.getClass());
 
         if (logger.isFatalErrorEnabled()) {
             logger.fatalError("FATAL ERROR");

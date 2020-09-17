@@ -3,8 +3,11 @@ package com.xbw.log.slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author xbw
+ */
 public class Slf4j {
-    private static Logger logger = LoggerFactory.getLogger(Slf4j.class);
+    private static final Logger logger = LoggerFactory.getLogger(Slf4j.class);
 
     public static void log() {
         log(logger);
@@ -18,8 +21,8 @@ public class Slf4j {
      *               org.slf4j.impl.SimpleLogger
      *               org.jboss.slf4j.JBossLoggerAdapter
      */
-    private static void log(Logger logger) {
-        logger.info("logger = " + logger.getClass().getName());
+    public static void log(Logger logger) {
+        logger.info("logger = {} , {}", logger.getClass(), logger.getName());
 
         if (logger.isErrorEnabled()) {
             logger.error("error");

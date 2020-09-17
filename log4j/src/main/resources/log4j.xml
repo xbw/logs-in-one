@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">-->
+<!--<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">-->
+<!--<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">-->
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="false">
+    <!-- https://www.cnblogs.com/alterhu/archive/2013/07/14/3189177.html -->
+    <!-- ========================== 自定义输出格式说明================================ -->
+    <!-- %p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL -->
+    <!-- %r 输出自应用启动到输出该log信息耗费的毫秒数 -->
+    <!-- %c 输出所属的类目，通常就是所在类的全名 -->
+    <!-- %t 输出产生该日志事件的线程名 -->
+    <!-- %n 输出一个回车换行符，Windows平台为“/r/n”，Unix平台为“/n” -->
+    <!-- %d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy MMM dd HH:mm:ss,SSS}，输出类似：2002年10月18日
+        22：10：28，921 -->
+    <!-- %l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。举例：Testlog4.main(TestLog4.java:10) -->
+    <!-- ========================================================================== -->
+
+    <!-- ========================== 输出方式说明================================ -->
+    <!-- Log4j提供的appender有以下几种: -->
+    <!-- org.apache.log4j.ConsoleAppender(控制台), -->
+    <!-- org.apache.log4j.FileAppender(文件), -->
+    <!-- org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件), -->
+    <!-- org.apache.log4j.RollingFileAppender(文件大小到达指定尺寸的时候产生一个新的文件), -->
+    <!-- org.apache.log4j.WriterAppender(将日志信息以流格式发送到任意指定的地方) -->
+    <!-- ========================================================================== -->
+
+    <!-- log4j:WARN 元素类型为 "log4j:configuration" 的内容必须匹配 "(renderer*,throwableRenderer?,appender*,plugin*,(category|logger)*,root?,(categoryFactory|loggerFactory)?)"。 -->
+    <!-- 这个警告产生的原因：在log4j的dtd中，明确定义了每个元素的顺序。 -->
+
+    <!-- 输出日志到控制台 -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+        <!-- 过滤器设置输出的级别,每个appender可以单独设置，这里省略了 -->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="trace"/>
+            <param name="levelMax" value="fatal"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+    </appender>
+
+    <appender name="file" class="org.apache.log4j.FileAppender">
+        <param name="File" value="../logs/log4j-default.log"/>
+        <!--<param name="ImmediateFlush" value="true" /> -->
+        <!--<param name="Threshold" value="info"></param> -->
+        <!--<param name="Append" value="true"></param> -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+        <!-- 过滤器设置输出的级别,每个appender可以单独设置，这里省略了 -->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="trace"/>
+            <param name="levelMax" value="fatal"/>
+            <param name="AcceptOnMatch" value="true"/>
+        </filter>
+    </appender>
+
+    <!-- 设定文件大小输出到文件 -->
+    <appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="../logs/log4j-rolling.log"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="50"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 设定文件大小输出到文件 -->
+    <appender name="custom" class="org.apache.log4j.RollingFileAppender">
+        <param name="File" value="../logs/log4j-custom.log"/>
+        <param name="MaxFileSize" value="100MB"/>
+        <param name="MaxBackupIndex" value="50"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 按DatePattern输出到文件 -->
+    <appender name="daily" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="../logs/log4j-daily"/>
+        <param name="DatePattern" value=".yyyy-MM-dd'.log'"/>
+        <!--<param name="DatePattern" value=".yyyy-MM-dd-HH-mm'.log'" /> -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- 立即生成当前日期文档 -->
+    <appender name="daily_debug" class="org.apache.log4j.rolling.RollingFileAppender">
+        <!-- 这里的class="org.apache.log4j.rolling.RollingFileAppender",而没有使用log4j的原始的：class="org.apache.log4j.DailyRollingFileAppender" -->
+        <param name="Append" value="true"/>
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern" value="../logs/log4j-daily_%d{yyyy-MM-dd}.log"/>
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+            <param name="LevelMax" value="DEBUG"/>
+        </filter>
+    </appender>
+
+    <!-- 用Email发送日志 -->
+    <appender name="mail" class="org.apache.log4j.net.SMTPAppender">
+        <param name="SMTPHost" value=""/>
+        <param name="From" value=""/>
+        <param name="To" value=""/>
+        <param name="SMTPUsername" value=""/>
+        <param name="SMTPPassword" value=""/>
+        <param name="Subject" value="Log4j - Log Mail"/>
+        <layout class="org.apache.log4j.HTMLLayout">
+            <param name="LocationInfo" value="TRUE"/>
+            <param name="Title" value="Log4j - Log Messages "/>
+        </layout>
+    </appender>
+
+    <appender name="socket" class="org.apache.log4j.net.SocketAppender">
+        <param name="RemoteHost" value="localhost"/>
+        <param name="Port" value="5000"/>
+        <param name="LocationInfo" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%t %-5p %c{2} - %m%n"/>
+        </layout>
+    </appender>
+
+    <!-- #将日志写入到Oracle数据库 -->
+    <appender name="database" class="org.apache.log4j.jdbc.JDBCAppender">
+        <param name="URL" value="jdbc:oracle:thin:@127.0.0.1:1521:log4j"/>
+        <param name="User" value="test"/>
+        <param name="Password" value="test"/>
+        <param name="Driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="insert into log4j(createdate,thread,level_,class,message) values(\'%d\',\'%t\',\'%-5p\',\'%c\',\'%m\')"/>
+        </layout>
+    </appender>
+
+    <!-- http://flysnowxf.iteye.com/blog/1030504 -->
+    <!-- 使用log4j扩展包的RollingFileAppender生成带时间戳的日志文件 -->
+    <appender name="timeBase" class="org.apache.log4j.rolling.RollingFileAppender">
+        <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+            <param name="FileNamePattern" value="../logs/log4j-timeBase.%d{yyyy-MM-dd-HH-mm}.log"/>
+        </rollingPolicy>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%c] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="CONSOLE"/>
+    </appender>
+
+
+    <!-- http://people.apache.org/~psmith/logging.apache.org/sandbox/jul-log4j-bridge/examples.html -->
+    <!-- log4j:WARN Unrecognized element plugin -->
+    <!-- http://apache-logging.6191.n7.nabble.com/WARN-Unrecognized-element-plugin-JULReceiver-td6656.html -->
+    <!-- https://mail-archives.apache.org/mod_mbox/logging-log4j-user/200803.mbox/%3C16012504.post@talk.nabble.com%3E -->
+    <!--<plugin name="jul2log4j" class="org.apache.log4j.jul.JULReceiver" />-->
+
+    <!--通过<category></category>的定义可以将各个包中的类日志输出到不同的日志文件中 -->
+    <category name="com.xbw" additivity="false">
+        <priority value="debug"/>
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="file"/>
+        <!--<appender-ref ref="rolling" /> -->
+        <!--<appender-ref ref="daily" /> -->
+        <!--<appender-ref ref="daily_debug"/>-->
+        <!--<appender-ref ref="mail" /> -->
+        <!--<appender-ref ref="timeBase" /> -->
+    </category>
+
+    <!-- 指定logger的设置，additivity指示是否遵循缺省的继承机制-->
+    <logger name="com.xbw.log.log4j.Log4j.custom" additivity="false">
+        <level value="info"/>
+        <appender-ref ref="custom"/>
+    </logger>
+
+    <!-- 根logger的设置 -->
+    <root>
+        <!-- <priority value="debug" /> -->
+        <priority value="trace"/>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>

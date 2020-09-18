@@ -34,12 +34,7 @@ public class Main {
      */
     public static void main(String[] args) {
         JCL.log();
-
-//        avalonConsole();
-//        avalonJdk14();
-//        avalonLog4J();
-//        avalonLogKit();
-//        avalonNull();
+        avalon();
     }
 
     /**
@@ -47,31 +42,15 @@ public class Main {
      * org.apache.commons.logging.Log = org.apache.commons.logging.impl.AvalonLogger
      * show Exception in thread "main" java.lang.ExceptionInInitializerError
      */
-    private static void avalonConsole() {
-        JCL.log(getAvalonLogger(new ConsoleLogger()));
-    }
-
-    private static void avalonJdk14() {
-        JCL.log(getAvalonLogger(new Jdk14Logger(java.util.logging.Logger.getLogger(JCL.class.getName()))));
-    }
-
-    private static void avalonLog4J() {
+    private static void avalon() {
+        JCL.log(new AvalonLogger(new ConsoleLogger()));
+        JCL.log(new AvalonLogger(new Jdk14Logger(java.util.logging.Logger.getLogger(JCL.class.getName()))));
         try {
-            JCL.log(getAvalonLogger(new Log4JLogger(org.apache.log4j.Logger.getLogger(JCL.class))));
+            JCL.log(new AvalonLogger(new Log4JLogger(org.apache.log4j.Logger.getLogger(JCL.class))));
         } catch (NoClassDefFoundError e) {
             // log4j is provided
         }
-    }
-
-    private static void avalonLogKit() {
-        JCL.log(getAvalonLogger(new LogKitLogger(org.apache.log.Hierarchy.getDefaultHierarchy().getLoggerFor(JCL.class.getName()))));
-    }
-
-    private static void avalonNull() {
-        JCL.log(getAvalonLogger(new NullLogger()));
-    }
-
-    private static AvalonLogger getAvalonLogger(org.apache.avalon.framework.logger.Logger logger) {
-        return new AvalonLogger(logger);
+        JCL.log(new AvalonLogger(new LogKitLogger(org.apache.log.Hierarchy.getDefaultHierarchy().getLoggerFor(JCL.class.getName()))));
+        JCL.log(new AvalonLogger(new NullLogger()));
     }
 }

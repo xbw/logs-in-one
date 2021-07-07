@@ -54,5 +54,12 @@
             <artifactId>jboss-logmanager</artifactId>
         </dependency>
         <!-- JBoss LogManager end -->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

@@ -25,10 +25,11 @@
         <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- May, 2012 -->
         <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.13.3</log4j2.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <logback.version>1.2.3</logback.version>
+        <log4j2.version>2.14.1</log4j2.version>
+        <slf4j.version>1.7.32</slf4j.version>
+        <logback.version>1.2.5</logback.version>
 
         <servlet.version>3.1.0</servlet.version>
     </properties>
@@ -64,12 +65,20 @@
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>apache-log4j-extras</artifactId>
+                <!-- Oct, 2013 -->
                 <version>1.2.17</version>
             </dependency>
             <!-- Apache Log4j 1.2 end -->
 
             <!-- Apache Log4j2 start -->
             <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+            <!--<dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-bom</artifactId>
+                <version>${log4j2.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-api</artifactId>
@@ -136,6 +145,13 @@
 
             <!-- SLF4J start -->
             <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+            <!--<dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-parent</artifactId>
+                <version>${slf4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
@@ -194,6 +210,13 @@
 
             <!-- Logback start -->
             <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+            <!--<dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-parent</artifactId>
+                <version>${logback.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>-->
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-core</artifactId>
@@ -216,30 +239,34 @@
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging</artifactId>
-                <version>3.4.1.Final</version>
+                <version>3.4.2.Final</version>
             </dependency>
             <!--JBoss Logging LogManager Implementation-->
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging-logmanager</artifactId>
+                <!-- Mar, 2010 -->
                 <version>2.2.0.CR2</version>
             </dependency>
             <!--Apache Commons Logging to JBoss Logging implementation -->
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>commons-logging-jboss-logging</artifactId>
+                <!-- Feb, 2018 -->
                 <version>1.0.0.Final</version>
             </dependency>
             <!--JBoss Logging Log4j Implementation-->
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging-log4j</artifactId>
+                <!-- JUL, 2009 -->
                 <version>2.2.0.CR1</version>
             </dependency>
             <!--JBoss Logging JDK Implementation-->
             <dependency>
                 <groupId>org.jboss.logging</groupId>
                 <artifactId>jboss-logging-jdk</artifactId>
+                <!-- JUL, 2009 -->
                 <version>2.2.0.CR1</version>
             </dependency>
             <!-- JBoss Logging end -->
@@ -249,31 +276,32 @@
             <dependency>
                 <groupId>org.jboss.logmanager</groupId>
                 <artifactId>jboss-logmanager</artifactId>
-                <version>2.1.17.Final</version>
+                <version>2.1.18.Final</version>
             </dependency>
             <!--An Apache Commons Logging implementation for JBoss Log Manager-->
             <dependency>
                 <groupId>org.jboss.logmanager</groupId>
                 <artifactId>commons-logging-jboss-logmanager</artifactId>
+                <!-- Oct, 2017 -->
                 <version>1.0.3.Final</version>
             </dependency>
             <!--Log4j2 JBoss LogManager-->
             <dependency>
                 <groupId>org.jboss.logmanager</groupId>
                 <artifactId>log4j2-jboss-logmanager</artifactId>
-                <version>1.0.0.Beta1</version>
+                <version>1.0.0.Final</version>
             </dependency>
             <!--Log4j JBoss LogManager-->
             <dependency>
                 <groupId>org.jboss.logmanager</groupId>
                 <artifactId>log4j-jboss-logmanager</artifactId>
-                <version>1.2.0.Final</version>
+                <version>1.2.2.Final</version>
             </dependency>
             <!--SLF4J: JBoss Log Manager-->
             <dependency>
                 <groupId>org.jboss.slf4j</groupId>
                 <artifactId>slf4j-jboss-logmanager</artifactId>
-                <version>1.0.4.GA</version>
+                <version>1.1.0.Final</version>
             </dependency>
             <!-- JBoss LogManager end -->
 

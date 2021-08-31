@@ -5,7 +5,10 @@ import org.apache.log4j.Logger;
 
 /**
  * @author xbw
+ * On August 5, 2015 the Logging Services Project Management Committee announced that Log4j 1.x had reached end of life.
+ * Users of Log4j 1 are recommended to upgrade to Apache Log4j 2, see https://logging.apache.org/log4j/2.x/index.html
  */
+@Deprecated
 public class Log4j {
     private static final Logger logger = Logger.getLogger(Log4j.class);
 

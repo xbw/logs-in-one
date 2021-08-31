@@ -18,6 +18,7 @@
         <module>slf4j-logback</module>
         <module>slf4j-log4j</module>
         <module>slf4j-log4j2</module>
+        <module>spring-jcl</module>
         <module>zoo</module>
     </modules>
 

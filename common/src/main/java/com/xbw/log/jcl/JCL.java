@@ -5,7 +5,9 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * @author xbw
+ * The last Release is 1.2 in July 2014, spring-jcl instead
  */
+@Deprecated
 public class JCL {
     private static final Log logger = LogFactory.getLog(JCL.class);
 

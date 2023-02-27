@@ -39,8 +39,7 @@
         <repository>
             <id>aliyun</id>
             <name>Aliyun Repo</name>
-            <url>https://maven.aliyun.com/repository/central/</url>
-            <!-- <url>http://maven.aliyun.com/nexus/content/groups/public/</url> -->
+            <url>https://maven.aliyun.com/repository/public/</url>
         </repository>
     </repositories>
 

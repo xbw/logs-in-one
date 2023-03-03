@@ -3,6 +3,7 @@ package com.xbw.log;
 
 import com.xbw.log.avalon.Avalon;
 import com.xbw.log.logkit.LogKit;
+import com.xbw.log.tinylog.TinyLog;
 import org.apache.avalon.framework.logger.*;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log.Hierarchy;
@@ -17,6 +18,8 @@ public class Main {
         avalon();
         LogKit.log();
         minlog();
+        tinylog();
+        tinylog1();
     }
 
 
@@ -52,5 +55,14 @@ public class Main {
         com.esotericsoftware.minlog.Log.info("info");
         com.esotericsoftware.minlog.Log.debug("debug");
         com.esotericsoftware.minlog.Log.trace("trace");
+    }
+
+    private static void tinylog() {
+        TinyLog.log();
+    }
+
+    private static void tinylog1() {
+        com.xbw.log.tinylog.archived.TinyLog.log();
+        com.xbw.log.tinylog.archived.TinyLog.log(org.pmw.tinylog.Level.TRACE);
     }
 }
